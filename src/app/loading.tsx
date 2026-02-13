@@ -1,11 +1,19 @@
-import { Box, LinearProgress, Skeleton, Stack } from "@mui/material";
+import { Box, CircularProgress, Paper, Skeleton, Stack, Typography } from "@mui/material";
 
 export default function Loading() {
   return (
     <Stack spacing={3}>
-      <Box>
-        <LinearProgress />
-      </Box>
+      <Paper variant="outlined" sx={{ p: 3 }}>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <CircularProgress size={28} thickness={5} />
+          <Box>
+            <Typography variant="h6">Loading</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Fetching the latest stories...
+            </Typography>
+          </Box>
+        </Stack>
+      </Paper>
       <Stack spacing={2}>
         {Array.from({ length: 6 }).map((_, index) => (
           <Box

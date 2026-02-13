@@ -1,4 +1,5 @@
 import FeedPage from "@/components/FeedPage";
+import { applyFilters, filtersActive, parseFilters } from "@/lib/filters";
 import { fetchList } from "@/lib/hn";
 
 type PageProps = {
@@ -15,6 +16,20 @@ const getPage = (searchParams?: Record<string, string | string[] | undefined>) =
 export default async function TopPage({ searchParams }: PageProps) {
   const resolved = searchParams ? await searchParams : undefined;
   const page = getPage(resolved);
-  const data = await fetchList("top", page - 1, 30);
-  return <FeedPage list="top" data={data} />;
+  const filters = parseFilters(resolved);
+  const active = filtersActive(filters);
+  const fetchLimit = active ? 100 : 30;
+  const data = await fetchList("top", page - 1, fetchLimit);
+  const items = active
+    ? applyFilters(data.items, filters).slice(0, 30)
+    : data.items;
+  const normalized = {
+    ...data,
+    items,
+    limit: 30,
+  };
+
+  return (
+    <FeedPage list="top" data={normalized} filters={filters} filtersActive={active} />
+  );
 }

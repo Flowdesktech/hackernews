@@ -6,7 +6,7 @@ import CommentTree from "./CommentTree";
 import type { HnItem } from "@/types/hn";
 
 const DEFAULT_COMMENT_DEPTH = 2;
-const DEFAULT_COMMENT_LIMIT = 120;
+const DEFAULT_COMMENT_LIMIT = 30;
 
 type CommentsSectionProps = {
   itemId: number;
@@ -81,7 +81,7 @@ const CommentsSection = ({ itemId }: CommentsSectionProps) => {
           size="small"
           onClick={() => {
             const nextDepth = Math.min(depth + 1, 4);
-            const nextLimit = Math.min(limit + 80, 300);
+            const nextLimit = Math.min(limit + 30, 300);
             setDepth(nextDepth);
             setLimit(nextLimit);
             loadComments(nextDepth, nextLimit);
