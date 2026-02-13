@@ -16,6 +16,54 @@ export const metadata: Metadata = {
   },
   description:
     "Flowdesk HN — a professional Hacker News dashboard with search and local bookmarks.",
+  applicationName: "Flowdesk HN",
+  authors: [{ name: "Flowdesktech", url: "https://github.com/Flowdesktech" }],
+  creator: "Flowdesktech",
+  publisher: "Flowdesktech",
+  category: "News",
+  keywords: [
+    "Hacker News",
+    "Tech News",
+    "Startup News",
+    "Developer News",
+    "Flowdesk",
+  ],
+  metadataBase: new URL("https://flowdesk-hn.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://flowdesk-hn.vercel.app",
+    title: "Flowdesk HN",
+    description:
+      "A professional Hacker News dashboard with search, filters, and local bookmarks.",
+    siteName: "Flowdesk HN",
+    images: [
+      {
+        url: "/logo.svg",
+        width: 120,
+        height: 120,
+        alt: "Flowdesk HN logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Flowdesk HN",
+    description:
+      "A professional Hacker News dashboard with search, filters, and local bookmarks.",
+    images: ["/logo.svg"],
+  },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: ["/favicon.svg"],
+    apple: [{ url: "/logo.svg", type: "image/svg+xml" }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport = {

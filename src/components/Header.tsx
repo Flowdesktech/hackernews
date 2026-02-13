@@ -9,6 +9,8 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { Suspense } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import HeaderSearch from "./HeaderSearch";
@@ -30,6 +32,13 @@ const Header = () => {
         <Toolbar sx={{ gap: 2, flexWrap: "wrap", px: 0, py: 1.5 }}>
           <Link href="/top" style={{ textDecoration: "none", color: "inherit" }}>
             <Stack direction="row" spacing={1} alignItems="center">
+              <Image
+                src="/logo.svg"
+                alt="Flowdesk HN"
+                width={28}
+                height={28}
+                style={{ borderRadius: 8 }}
+              />
               <Typography variant="h6" sx={{ fontWeight: 800 }}>
                 Flowdesk
               </Typography>
@@ -70,7 +79,9 @@ const Header = () => {
             })}
           </Stack>
           <Box marginLeft="auto" display="flex" alignItems="center" gap={2}>
-            <HeaderSearch />
+            <Suspense fallback={<Box sx={{ width: { xs: 180, md: 240 } }} />}>
+              <HeaderSearch />
+            </Suspense>
           </Box>
         </Toolbar>
       </Container>
